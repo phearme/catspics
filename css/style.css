@@ -1,0 +1,55 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#divHeader {
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	line-height: 40px;
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	-webkit-box-shadow: 0 0 3px #000000;
+	vertical-align: middle;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	font-size: 17.5px;
+}
+
+#divPics {
+	margin-top: 40px;
+}
+
+#btnMoreCats {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+	width: 90%;
+	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	line-height: 20px;
+	vertical-align: middle;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	padding: 11px 19px;
+	font-size: 17.5px;
+	-webkit-border-radius: 6px;
+	background-repeat: repeat-x;
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #006dcc;
+}
+
+#imgLoad {
+	display: none;
+	margin-top: 8px;
+	margin-bottom: 5px;
+}
+
+.imgPics {
+	width:90%;
+	margin-top: 10px;
+	-webkit-box-shadow: 0 3px 6px #000000;
+}
