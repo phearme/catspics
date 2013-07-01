@@ -5,7 +5,7 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#divHeader {
+.header {
 	position: fixed;
 	width: 100%;
 	top: 0px;
@@ -17,6 +17,7 @@ body {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	font-size: 17.5px;
 }
+
 
 #divPics {
 	margin-top: 40px;
