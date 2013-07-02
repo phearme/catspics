@@ -9,7 +9,8 @@ var app = {
 	btnMore = document.getElementById("btnMoreCats"),
 	imgLoad = document.getElementById("imgLoad"),
 	divPics = document.getElementById("divPics"),
-	divHeader = document.getElementById("divHeader"),
+	spanHeaderLabel = document.getElementById("spanHeaderLabel"),
+	btnRefresh = document.getElementById("btnRefresh"),
 	lastPage = 0,
 	flickrUrl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="
 		+ app.flickrAPIKey + "&tags=" + app.tags + "&per_page=10&extras=url_o&format=json";
@@ -52,7 +53,11 @@ function btnMoreClick() {
 }
 
 document.getElementsByTagName("title")[0].innerHTML = app.title;
-divHeader.innerHTML = app.title;
+spanHeaderLabel.innerHTML = app.title;
 btnMore.innerHTML = app.moreButtonLabel;
 btnMore.addEventListener("click", btnMoreClick, false);
+btnRefresh.addEventListener("click", function () {
+	divPics.innerHTML = "";
+	btnMoreClick();
+}, false);
 btnMoreClick();
