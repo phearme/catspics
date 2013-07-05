@@ -10,9 +10,10 @@ body {
 	width: 100%;
 	top: 0px;
 	height: 40px;
-	background-image: -webkit-linear-gradient(top, #222222, #202020);
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
 	-webkit-box-shadow: 0 0 3px #000000;
 	vertical-align: middle;
+	z-index: 99;
 }
 
 .headerIcon {
@@ -20,16 +21,28 @@ body {
 }
 
 .headerText {
-	line-height: 40px;
 	float: left;
-	-webkit-text-fill-color: transparent;
-	background: -webkit-linear-gradient(#eee, #aaa);
-	-webkit-background-clip: text;
-	text-shadow: 0 0 1px #aaa;
+	line-height: 40px;
+	color: #ffffff;
 	font-size: 17.5px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-#divPics {
+.headerButton, .headerButtonPressed {
+	float: right;
+	border-left: solid 1px #0044cc;
+}
+
+.headerButton {
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+}
+
+.headerButtonPressed {
+	background-image: -webkit-linear-gradient(top, #0044cc, #0044cc);
+}
+
+.mainWrapper {
+	z-index: 98;
 	margin-top: 40px;
 }
 
@@ -56,22 +69,26 @@ body {
 	width: 90%;
 }
 
-#btnRefresh {
-	margin-top: 10px;
-	margin-right: 4px;
-	float: right;
-}
-
 #imgLoad {
 	display: none;
 	margin-top: 8px;
 	margin-bottom: 5px;
 }
 
-.imgPics {
+.imgPicsFadingIn, .imgPics{
 	width:90%;
 	margin-top: 10px;
 	-webkit-box-shadow: 0 3px 6px #000000;
+}
+
+.imgPicsFadingIn {
+	transition: all 2s ease-in-out;
+	opacity: 0;
+}
+
+.imgPics {
+	transition: all 2s ease-in-out;
+	opacity: 1;
 }
 
 ::-webkit-scrollbar {
