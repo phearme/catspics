@@ -31,6 +31,8 @@ body {
 .headerButton, .headerButtonPressed {
 	float: right;
 	border-left: solid 1px #0044cc;
+	height: 40px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
 }
 
 .headerButton {
@@ -82,12 +84,12 @@ body {
 }
 
 .imgPicsFadingIn {
-	transition: all 2s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 	opacity: 0;
 }
 
 .imgPics {
-	transition: all 2s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 	opacity: 1;
 }
 
