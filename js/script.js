@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.6",
+		version: "1.0.0.7",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -65,7 +65,7 @@ function btnMoreClick() {
 	loadFlickrPhotos();
 }
 
-document.getElementsByTagName("body")[0].addEventListener("load", function () {
+function onReady() {
 	"use strict";
 	btnMore = document.getElementById("btnMoreCats");
 	imgLoad = document.getElementById("imgLoad");
@@ -73,22 +73,24 @@ document.getElementsByTagName("body")[0].addEventListener("load", function () {
 	spanHeaderLabel = document.getElementById("spanHeaderLabel");
 	btnRefresh = document.getElementById("btnRefresh");
 
-	document.addEventListener("deviceready", function () {
-		document.getElementsByTagName("title")[0].innerHTML = app.title;
-		spanHeaderLabel.innerHTML = app.title;
-		btnMore.innerHTML = app.moreButtonLabel;
-		btnMore.addEventListener("click", function (e) {
-			btnMoreClick();
-			e.preventDefault();
-		}, false);
-		btnRefresh.addEventListener("click", function (e) {
-			this.className = "headerButtonPressed";
-			divPics.innerHTML = "";
-			lastPage = 0;
-			btnMoreClick();
-			e.preventDefault();
-		}, false);
-
+	document.getElementsByTagName("title")[0].innerHTML = app.title;
+	spanHeaderLabel.innerHTML = app.title;
+	btnMore.innerHTML = app.moreButtonLabel;
+	btnMore.addEventListener("click", function (e) {
 		btnMoreClick();
+		e.preventDefault();
 	}, false);
+	btnRefresh.addEventListener("click", function (e) {
+		this.className = "headerButtonPressed";
+		divPics.innerHTML = "";
+		lastPage = 0;
+		btnMoreClick();
+		e.preventDefault();
+	}, false);
+
+	btnMoreClick();
+}
+
+document.addEventListener("deviceready", function () {
+	onReady();
 }, false);
