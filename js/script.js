@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.2",
+		version: "1.0.0.3",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -68,7 +68,10 @@ function btnMoreClick() {
 document.getElementsByTagName("title")[0].innerHTML = app.title;
 spanHeaderLabel.innerHTML = app.title;
 btnMore.innerHTML = app.moreButtonLabel;
-btnMore.addEventListener("click", btnMoreClick, false);
+btnMore.addEventListener("click", function (e) {
+	btnMoreClick();
+	e.preventDefault();
+}, false);
 btnRefresh.addEventListener("click", function (e) {
 	"use strict";
 	this.className = "headerButtonPressed";
