@@ -1,17 +1,17 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.5",
+		version: "1.0.0.6",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
 		retryFrequency: 5000
 	},
-	btnMore = document.getElementById("btnMoreCats"),
-	imgLoad = document.getElementById("imgLoad"),
-	divPics = document.getElementById("divPics"),
-	spanHeaderLabel = document.getElementById("spanHeaderLabel"),
-	btnRefresh = document.getElementById("btnRefresh"),
+	btnMore,
+	imgLoad,
+	divPics,
+	spanHeaderLabel,
+	btnRefresh,
 	lastPage = 0,
 	flickrUrl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="
 		+ app.flickrAPIKey + "&tags=" + app.tags + "&per_page=10&extras=url_o&format=json";
@@ -67,6 +67,12 @@ function btnMoreClick() {
 
 document.getElementsByTagName("body")[0].addEventListener("load", function () {
 	"use strict";
+	btnMore = document.getElementById("btnMoreCats");
+	imgLoad = document.getElementById("imgLoad");
+	divPics = document.getElementById("divPics");
+	spanHeaderLabel = document.getElementById("spanHeaderLabel");
+	btnRefresh = document.getElementById("btnRefresh");
+
 	document.addEventListener("deviceready", function () {
 		document.getElementsByTagName("title")[0].innerHTML = app.title;
 		spanHeaderLabel.innerHTML = app.title;
