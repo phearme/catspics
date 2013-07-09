@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.9",
+		version: "1.0.0.10",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -24,14 +24,14 @@ function jsonFlickrApi(data) {
 			if (data.photos.photo[i].farm && data.photos.photo[i].server
 					&& data.photos.photo[i].id && data.photos.photo[i].secret) {
 				img = document.createElement("img");
-				img.setAttribute("src", "http://farm" + data.photos.photo[i].farm
-					+ ".staticflickr.com/" + data.photos.photo[i].server
-					+ "/" + data.photos.photo[i].id
-					+ "_" + data.photos.photo[i].secret + "_m.jpg");
 				img.className = "imgPicsFadingIn";
 				img.addEventListener("load", function () {
 					this.className = "imgPics";
 				}, false);
+				img.src = "http://farm" + data.photos.photo[i].farm
+					+ ".staticflickr.com/" + data.photos.photo[i].server
+					+ "/" + data.photos.photo[i].id
+					+ "_" + data.photos.photo[i].secret + "_m.jpg";
 				divPics.appendChild(img);
 			}
 		}
@@ -53,8 +53,8 @@ function loadFlickrPhotos() {
 	script.setAttribute("src", flickrUrl + "&page=" + lastPage + "&nocache=" + new Date().getTime());
 	script.addEventListener("error", function () {
 		window.setTimeout(loadFlickrPhotos, app.retryFrequency);
-	});
-	script.addEventListener("load", doneLoading);
+	}, false);
+	script.addEventListener("load", doneLoading, false);
 	document.getElementsByTagName("head")[0].appendChild(script);
 }
 
