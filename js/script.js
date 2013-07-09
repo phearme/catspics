@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.13",
+		version: "1.0.0.14",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -25,14 +25,14 @@ function jsonFlickrApi(data) {
 					&& data.photos.photo[i].id && data.photos.photo[i].secret) {
 				img = document.createElement("img");
 				img.className = "imgPicsFadingIn";
-				img.addEventListener("load", function () {
-					this.className = "imgPics";
-				}, false);
+				divPics.appendChild(img);
 				img.src = "http://farm" + data.photos.photo[i].farm
 					+ ".staticflickr.com/" + data.photos.photo[i].server
 					+ "/" + data.photos.photo[i].id
 					+ "_" + data.photos.photo[i].secret + "_m.jpg";
-				divPics.appendChild(img);
+				img.addEventListener("load", function () {
+					this.className = "imgPics";
+				}, false);
 			}
 		}
 	}
