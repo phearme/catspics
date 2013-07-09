@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.7",
+		version: "1.0.0.8",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -65,7 +65,7 @@ function btnMoreClick() {
 	loadFlickrPhotos();
 }
 
-function onReady() {
+function onLoad() {
 	"use strict";
 	btnMore = document.getElementById("btnMoreCats");
 	imgLoad = document.getElementById("imgLoad");
@@ -91,6 +91,4 @@ function onReady() {
 	btnMoreClick();
 }
 
-document.addEventListener("deviceready", function () {
-	onReady();
-}, false);
+document.getElementsByTagName("body")[0].addEventListener("load", onLoad, false);
