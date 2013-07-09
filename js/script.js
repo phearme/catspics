@@ -1,7 +1,7 @@
 /*jslint browser:true */
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.10",
+		version: "1.0.0.11",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -27,6 +27,7 @@ function jsonFlickrApi(data) {
 				img.className = "imgPicsFadingIn";
 				img.addEventListener("load", function () {
 					this.className = "imgPics";
+					alert(this.className);
 				}, false);
 				img.src = "http://farm" + data.photos.photo[i].farm
 					+ ".staticflickr.com/" + data.photos.photo[i].server
