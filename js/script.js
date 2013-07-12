@@ -25,12 +25,12 @@ function jsonFlickrApi(data) {
 					&& data.photos.photo[i].id && data.photos.photo[i].secret) {
 				img = document.createElement("img");
 				img.className = "imgPicsFadingIn";
-				divPics.appendChild(img);
 				img.src = "http://farm" + data.photos.photo[i].farm
 					+ ".staticflickr.com/" + data.photos.photo[i].server
 					+ "/" + data.photos.photo[i].id
 					+ "_" + data.photos.photo[i].secret + "_m.jpg";
 				img.addEventListener("load", function () {
+					divPics.appendChild(this);
 					this.className = "imgPics";
 				}, false);
 			}
@@ -42,7 +42,9 @@ function doneLoading() {
 	"use strict";
 	imgLoad.style.display = "none";
 	btnMore.style.display = "inline-block";
-	btnRefresh.className = "headerButton";
+	if (btnRefresh.className !== "headerButton") {
+		btnRefresh.className = "headerButton";
+	}
 }
 
 function loadFlickrPhotos() {
@@ -91,4 +93,4 @@ function onLoad() {
 	btnMoreClick();
 }
 
-window.addEventListener("load", onLoad, false);
+document.addEventListener("deviceready", onLoad, false);
