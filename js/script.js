@@ -1,7 +1,7 @@
 /*jslint browser:true*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.20",
+		version: "1.0.0.21",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -103,5 +103,8 @@ function onLoad() {
 
 document.addEventListener("deviceready", function () {
 	alert("device ready");
-	window.addEventListener("load", onLoad, false);
+	$(function() {
+		alert("document ready");
+		onLoad();
+	});
 }, false);
