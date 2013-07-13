@@ -1,17 +1,13 @@
 /*jslint browser:true*/
+/*global $*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.21",
+		version: "1.0.0.22",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
 		retryFrequency: 5000
 	},
-	btnMore,
-	imgLoad,
-	divPics,
-	spanHeaderLabel,
-	btnRefresh,
 	lastPage = 0,
 	flickrUrl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="
 		+ app.flickrAPIKey + "&tags=" + app.tags + "&per_page=10&extras=url_o&format=json";
@@ -23,16 +19,16 @@ function jsonFlickrApi(data) {
 		for (i = 0; i < data.photos.photo.length; i += 1) {
 			if (data.photos.photo[i].farm && data.photos.photo[i].server
 					&& data.photos.photo[i].id && data.photos.photo[i].secret) {
-				img = document.createElement("img");
-				img.className = "imgPicsFadingIn";
-				img.src = "http://farm" + data.photos.photo[i].farm
+				img = $(document.createElement("img"));
+				img.addClass("imgPicsFadingIn");
+				img.load(function () {
+					$(this).removeClass("imgPicsFadingIn").addClass("imgPics");
+				});
+				$("#divPics").append(img);
+				img.attr("src", "http://farm" + data.photos.photo[i].farm
 					+ ".staticflickr.com/" + data.photos.photo[i].server
 					+ "/" + data.photos.photo[i].id
-					+ "_" + data.photos.photo[i].secret + "_m.jpg";
-				img.addEventListener("load", function () {
-					divPics.appendChild(this);
-					this.className = "imgPics";
-				}, false);
+					+ "_" + data.photos.photo[i].secret + "_m.jpg");
 			}
 		}
 	}
@@ -40,10 +36,10 @@ function jsonFlickrApi(data) {
 
 function doneLoading() {
 	"use strict";
-	imgLoad.style.display = "none";
-	btnMore.style.display = "inline-block";
-	if (btnRefresh.className !== "headerButton") {
-		btnRefresh.className = "headerButton";
+	$("#imgLoad").css("display", "none");
+	$("#btnMore").css("display", "inline-block");
+	if ($("#btnRefresh").hasClass("headerButtonPressed")) {
+		$("#btnRefresh").removeClass("headerButtonPressed").addClass("headerButton");
 	}
 }
 
@@ -62,39 +58,27 @@ function loadFlickrPhotos() {
 
 function btnMoreClick() {
 	"use strict";
-	btnMore.style.display = "none";
-	imgLoad.style.display = "inline-block";
+	$("#btnMore").css("display", "none");
+	$("#imgLoad").css("display", "inline-block");
 	loadFlickrPhotos();
 }
 
 function onLoad() {
 	"use strict";
-	alert("onLoad");
 	try {
-		btnMore = document.getElementById("btnMoreCats");
-		imgLoad = document.getElementById("imgLoad");
-		divPics = document.getElementById("divPics");
-		spanHeaderLabel = document.getElementById("spanHeaderLabel");
-		btnRefresh = document.getElementById("btnRefresh");
-		alert("got elements");
-
-		document.getElementsByTagName("title")[0].innerHTML = app.title;
-		spanHeaderLabel.innerHTML = app.title;
-		alert("title set");
-		btnMore.innerHTML = app.moreButtonLabel;
-		alert("btn label set");
-		btnMore.addEventListener("click", function (e) {
+		document.title = app.title;
+		$("#spanHeaderLabel").html(app.title);
+		$("#btnMore").html(app.moreButtonLabel);
+		$("#btnMore").click(function () {
 			btnMoreClick();
-			e.preventDefault();
-		}, false);
-		btnRefresh.addEventListener("click", function (e) {
-			this.className = "headerButtonPressed";
-			divPics.innerHTML = "";
+		});
+		$("#btnRefresh").click(function () {
+			$("#btnRefresh").removeClass("headerButton").addClass("headerButtonPressed");
+			$("#divPics").empty();
 			lastPage = 0;
 			btnMoreClick();
-			e.preventDefault();
-		}, false);
-		alert("evnts bound, calling the click");
+		});
+
 		btnMoreClick();
 	} catch (e1) {
 		alert("err onload: " + e1);
@@ -102,9 +86,7 @@ function onLoad() {
 }
 
 document.addEventListener("deviceready", function () {
-	alert("device ready");
-	$(function() {
-		alert("document ready");
+	$(function () {
 		onLoad();
 	});
 }, false);
