@@ -2,7 +2,7 @@
 /*global $*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.22",
+		version: "1.0.1.0",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
@@ -38,9 +38,7 @@ function doneLoading() {
 	"use strict";
 	$("#imgLoad").css("display", "none");
 	$("#btnMore").css("display", "inline-block");
-	if ($("#btnRefresh").hasClass("headerButtonPressed")) {
-		$("#btnRefresh").removeClass("headerButtonPressed").addClass("headerButton");
-	}
+	$("#btnRefresh").removeClass().addClass("headerButton");
 }
 
 function loadFlickrPhotos() {
@@ -73,7 +71,7 @@ function onLoad() {
 			btnMoreClick();
 		});
 		$("#btnRefresh").click(function () {
-			$("#btnRefresh").removeClass("headerButton").addClass("headerButtonPressed");
+			$("#btnRefresh").removeClass().addClass("headerButtonPressed");
 			$("#divPics").empty();
 			lastPage = 0;
 			btnMoreClick();
