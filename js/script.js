@@ -83,8 +83,8 @@ function onLoad() {
 	}
 }
 
-document.addEventListener("deviceready", function () {
+//document.addEventListener("deviceready", function () {
 	$(function () {
 		onLoad();
 	});
-}, false);
+//}, false);
