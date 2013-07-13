@@ -1,7 +1,7 @@
 /*jslint browser:true*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.0.19",
+		version: "1.0.0.20",
 		tags: "cat",
 		moreButtonLabel: "More Cats &#187;",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
