@@ -4,12 +4,12 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.catspics"
-        version   = "1.0.1.1">
+        version   = "1.0.1.2">
 
     <name>Cats Pics</name>
 
     <description>
-        Pictures of cats. Infinite photos of adorable and cute cats.
+        Pictures of cats. Infinite photos of adorable and cute cats. Sounds of cats.
     </description>
 
     <author href="http://phonegap.com" email="raphael.cohen@gmail.com">
