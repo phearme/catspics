@@ -1,8 +1,8 @@
 /*jslint browser:true*/
-/*global $, alert*/
+/*global $, alert, bindTouchButton*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.1.2",
+		version: "1.0.2.0",
 		tags: "cat",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
 		freesoundAPIKey: "f57a71d60c1b46958ca27391574a5f9e",
@@ -17,7 +17,7 @@ var app = {
 		+ app.freesoundAPIKey
 		+ "&s=created_desc"
 		//+ "&f=type:ogg type:mp3 duration:[0 TO 60]"
-		+ "&f=duration:[0 TO 30] type:mp3"
+		+ "&f=duration:[0 TO 20] type:mp3"
 		+ "&fields=type,serve&sounds_per_page=" + pageSize + "&format=json&callback=freesoundcallback";
 
 function shuffleArray(a) {
@@ -73,9 +73,15 @@ function onImgClick(e) {
 	if (app.sounds) {
 		var id = window.parseInt($(e.target).attr("id").replace("img", ""), 10),
 			sound = app.sounds[id];
-		console.log(id, app.sounds);
+		console.log(id, sound);
 		if (sound) {
+			$("#audio_main").unbind("canplay");
+			$("#audio_main")[0].pause();
 			$("#audio_main").attr("src", sound.serve + "?api_key=" + app.freesoundAPIKey);
+			$("#audio_main")[0].load();
+			$("#audio_main").bind("canplay", function () {
+				$("#audio_main")[0].play();
+			});
 		}
 	}
 }
@@ -129,14 +135,14 @@ function getMore() {
 	}
 }
 
-function btnRefreshClick(e) {
+function btnRefreshClick() {
 	"use strict";
 	$("#divPics").empty();
 	lastPage = 0;
 	getMore();
 }
 
-function onScroll(e) {
+function onScroll() {
 	"use strict";
 	if ($(window).scrollTop() >= $(document).height() - $(window).height() - 50) {
 		getMore();
@@ -162,13 +168,9 @@ function onLoad() {
 	}
 }
 
-/*
 document.addEventListener("deviceready", function () {
 	"use strict";
-*/
 	$(function () {
 		onLoad();
 	});
-/*
 }, false);
-*/
