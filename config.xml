@@ -88,6 +88,8 @@
 
         Otherwise, you can specify specific domains:
     -->
+	<gap:platform name="android" />
+
 	<access origin="*" />
     <!--
 	    <access origin="http://127.0.0.1*" /> 
