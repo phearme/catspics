@@ -2,7 +2,7 @@
 /*global $, alert, bindTouchButton*/
 var app = {
 		title: "Cats Pics",
-		version: "1.0.2.0",
+		version: "1.0.2.1",
 		tags: "cat",
 		flickrAPIKey: "b4bc32f4bec34c45463aa6c224e56e2e",
 		freesoundAPIKey: "f57a71d60c1b46958ca27391574a5f9e",
