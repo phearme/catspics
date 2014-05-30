@@ -11,7 +11,7 @@ var app = {
 	lastPage = 0,
 	pageSize = 10,
 	loadingImages = false,
-	flickrUrl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="
+	flickrUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="
 		+ app.flickrAPIKey + "&tags=" + app.tags + "&per_page=" + pageSize + "&extras=url_o&format=json",
 	freesoundUrl = "http://www.freesound.org/api/sounds/search?q=" + app.tags + "&api_key="
 		+ app.freesoundAPIKey
